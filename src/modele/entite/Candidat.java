@@ -1,3 +1,4 @@
+package entite;
 
 public class Candidat extends Thread
 {

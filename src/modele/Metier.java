@@ -3,6 +3,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import entite.Candidat;
+
 public class Metier 
 {
 	private List<Candidat> lstCandidat;
@@ -25,6 +27,8 @@ public class Metier
 		{
 			lstNumeroCandidat.add(this.lstCandidat.get(cpt).getNumero());
 		}
+
+		return lstNumeroCandidat;
 	}
 
 	private void initLstCandidat(int nombre_candidat)
@@ -33,6 +37,10 @@ public class Metier
 		{
 			this.lstCandidat.add(new Candidat(cpt + 1));
 		}
+	}
+
+	public static void main(String[] args) {
+		new Metier().getLstNumeroCandidat().toString();
 	}
 
 }

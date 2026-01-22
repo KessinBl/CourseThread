@@ -1,6 +1,7 @@
 {
     "java.project.sourcePaths": [
-		"src/controleur"
+		"src/controleur",
+		"src/modele"
 	],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
