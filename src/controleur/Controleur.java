@@ -1,6 +1,8 @@
 
 public class Controleur 
 {
+	private Metier metier;
+	
 	public Controleur ()
 	{
 
