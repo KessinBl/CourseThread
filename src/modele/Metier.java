@@ -47,7 +47,7 @@ public class Metier
 	public boolean courseTerminer()
 	{
 		boolean estTerminer = true;
-		
+
 		for(Candidat candidat : this.lstCandidat)
 		{
 			if(candidat.getValeurCompteur() <= 99 )
@@ -67,11 +67,12 @@ public class Metier
 		}
 	}
 
-	public static void main(String[] args) {
+	/*
+		public static void main(String[] args) {
 		Metier metier = new Metier(17);
 		System.out.println(metier.getLstNumeroCandidat().toString());
 
-		System.out.println("/*---------------------------*/");
+		System.out.println("/*---------------------------");
 
 		metier.lancerCourse();
 
@@ -88,7 +89,8 @@ public class Metier
 
 		}
 
-		System.out.println("/*---------------------------*/");
+		System.out.println("/*---------------------------*");
 	}
+	*/
 
 }
