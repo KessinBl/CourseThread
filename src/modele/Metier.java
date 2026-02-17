@@ -6,8 +6,9 @@ import entite.Candidat;
 public class Metier 
 {
 	private List<Candidat> lstCandidat;
-	private List< Thread >  lstThreads;   
+	private List< Thread >  lstThreads;
 	private int        nombre_candidat;
+	private int           rangCandidat;
 
 	public Metier(int nombre_candidat)
 	{
@@ -15,6 +16,7 @@ public class Metier
 		this.lstThreads  = new ArrayList< Thread >();
 
 		this.nombre_candidat = nombre_candidat;
+		this.rangCandidat    = 0;
 		this.initLstCandidat(nombre_candidat);
 	}
 
@@ -49,8 +51,22 @@ public class Metier
 
 		for(Candidat candidat : this.lstCandidat)
 		{
-			Thread t = new Thread(candidat);
+			Runnable run = new Runnable() {
+
+				public void run() 
+				{
+					candidat.run();
+					
+					if(candidat.getRang() == null)
+					{
+						candidat.setRang(Metier.this.attribuerRang());
+					}
+				}
+				
+			};
+			Thread     t = new Thread(run);
 			t.start();
+
 
 			this.lstThreads.add(t);
 		}
@@ -58,29 +74,47 @@ public class Metier
 
 	public void recommencer()
 	{
+		// Stopper les candidats
 		for(Candidat c : this.lstCandidat)
 		{
 			c.arreter();
-			c.reinitialiserCompteur();
 		}
 
+		// Attendre la fin des threads
+		for(Thread t : this.lstThreads)
+		{
+			try
+			{
+				t.join();
+			}
+			catch(InterruptedException e)
+			{
+				Thread.currentThread().interrupt();
+			}
+		}
+
+		// Réinitialisation
 		this.lstCandidat.clear();
+		this.lstThreads.clear();
 		this.initLstCandidat(this.nombre_candidat);
 	}
 
 	public boolean courseTerminer()
 	{
-		boolean estTerminer = true;
-
 		for(Candidat candidat : this.lstCandidat)
 		{
-			if(candidat.getValeurCompteur() <= 99 )
+			if(candidat.getValeurCompteur() <= 199 )
 			{
-				estTerminer = false;
+				return false;
 			}
 		}
 
-		return estTerminer;
+		return true;
+	}
+
+	public synchronized int attribuerRang()
+	{
+		return this.rangCandidat++;
 	}
 
 	private void initLstCandidat(int nombre_candidat)
@@ -91,30 +125,6 @@ public class Metier
 		}
 	}
 
-	/*
-		public static void main(String[] args) {
-		Metier metier = new Metier(17);
-		System.out.println(metier.getLstNumeroCandidat().toString());
 
-		System.out.println("/*---------------------------");
-
-		metier.lancerCourse();
-
-		for(int cpt = 0; cpt < metier.getLstNumeroCandidat().size(); cpt++)
-		{
-			String chaine = "";
-
-			for(int cptCompteur = 0; cptCompteur < metier.getCompteurCandidat((cpt+ 1)) ; cptCompteur++)
-			{
-				chaine += " ";
-			}
-
-			System.out.println(chaine + metier.getCompteurCandidat((cpt+ 1)));
-
-		}
-
-		System.out.println("/*---------------------------*");
-	}
-	*/
 
 }

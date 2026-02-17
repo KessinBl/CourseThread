@@ -2,17 +2,19 @@ package entite;
 
 public class Candidat implements Runnable
 {
-	private volatile int     compteur;
-	private volatile boolean  enCours;
+	private int     compteur;
+	private boolean  enCours;
+
 	private Integer   numero;
 	private Integer     rang;
+
+	private final int MAX = 255;
 
 	public Candidat (int numero)
 	{
 		this.numero   = numero;
 		this.compteur =      0;
 		this.rang     =   null;
-		this.compteur =      0;
 		this.enCours  =   true;
 	}
 
@@ -46,6 +48,7 @@ public class Candidat implements Runnable
 
 	public void reinitialiserCompteur()
 	{
+		this.enCours = true;
 		this.compteur = 0;
 	}
 
@@ -62,11 +65,13 @@ public class Candidat implements Runnable
 	{
 		try 
 		{
-			while(this.enCours && this.compteur < 100)
+			while(this.enCours && this.compteur < this.MAX)
 			{
 				this.compteur++;
-				Thread.sleep(1000);
+				Thread.sleep(50);
 			}
+
+			this.enCours = false;
 		}
 		catch(InterruptedException ie)
 		{

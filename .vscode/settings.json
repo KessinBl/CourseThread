@@ -2,7 +2,8 @@
     "java.project.sourcePaths": [
 		"src/controleur",
 		"src/modele",
-		"src/vue"
+		"src/vue",
+        "src/vue/terrainCourse"
 	],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [

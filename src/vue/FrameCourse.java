@@ -28,4 +28,9 @@ public class FrameCourse extends JFrame
 		this.setVisible(true);
 		this.pack();
 	}
+
+	public void majIhm()
+	{
+		this.panelCourse.majIhm();
+	}
 }

@@ -1,5 +1,3 @@
-package terrainCourse;
-
 import java.awt.Color;
 
 public class Candidat 
@@ -19,7 +17,7 @@ public class Candidat
 
 		this.numeroCandidat = ++ Candidat.numero;
 		this.posX = 0;
-		this.posY = this.numeroCandidat + 40;
+		this.posY = 50 +  (this.numeroCandidat -1 ) * 120;
 	}
 
 	/*--------------------------------*/
@@ -34,6 +32,6 @@ public class Candidat
 	/*          Modificateur          */
 	/*--------------------------------*/
 
-	public int setX(int x) { return this.posX = x; }
-	public int setY(int y) { return this.posY = y; }
+	public int setX(int x) { return this.posX = x + 10 ; }
+	public int setY(int y) { return this.posY = y       ; }
 }

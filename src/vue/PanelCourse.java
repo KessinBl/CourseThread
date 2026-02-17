@@ -4,9 +4,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.BorderFactory;
 
-import terrainCourse.*;
-
 import java.awt.BorderLayout;
+import java.awt.Label;
 import java.awt.event.*;
 
 public class PanelCourse extends JPanel implements ActionListener
@@ -48,10 +47,10 @@ public class PanelCourse extends JPanel implements ActionListener
 		panelCentre = new JPanel(new BorderLayout(10,10));
 		panelCentre.setBorder(BorderFactory.createTitledBorder("Terrain de course"));
 		
-		this.panelTerrain = new PanelTerrainCourse(this.tabCandidats);
+		this.panelTerrain = new PanelTerrainCourse(this.ctrl , this.tabCandidats);
 		panelCentre.add(this.panelTerrain,BorderLayout.CENTER);
 
-		
+
 		/* pour le panel du bas */
 		this.btnCommencer   = new JButton("commencer la course"  );
 		this.btnRecommencer = new JButton("recommencer la course");
@@ -70,6 +69,8 @@ public class PanelCourse extends JPanel implements ActionListener
 		this.add(panelHaut  , BorderLayout.NORTH );
 		this.add(panelCentre, BorderLayout.CENTER);
 		this.add(panelBas   , BorderLayout.SOUTH );
+		this.add(new Label(" "), BorderLayout.EAST);
+		this.add(new Label(" "), BorderLayout.WEST);
 
 		/* --------------------------------------- */
 		/*        Activations des composants       */
@@ -78,6 +79,11 @@ public class PanelCourse extends JPanel implements ActionListener
 		this.btnCommencer  .addActionListener(this);
 		this.btnRecommencer.addActionListener(this);
 
+	}
+
+	public void majIhm()
+	{
+		this.panelTerrain.majIhm();
 	}
 
 	public void actionPerformed(ActionEvent e) 
@@ -94,7 +100,7 @@ public class PanelCourse extends JPanel implements ActionListener
 		{
 			this.ctrl.recommencerCourse();
 			System.out.println("recommencer");
-			this.btnCommencer  .setEnabled(!this.btnCommencer.isEnabled());
+			this.btnCommencer  .setEnabled(!this.btnCommencer  .isEnabled());
 			this.btnRecommencer.setEnabled(!this.btnRecommencer.isEnabled());
 		}
 	}
