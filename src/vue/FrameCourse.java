@@ -1,4 +1,3 @@
-
 import javax.swing.JFrame;
 
 public class FrameCourse extends JFrame
@@ -8,7 +7,6 @@ public class FrameCourse extends JFrame
 
 	public FrameCourse(Controleur ctrl)
 	{
-		this.setLocationRelativeTo(null);
 		this.setTitle("course de thread");
 		
 		/* --------------------------------------- */
@@ -27,6 +25,16 @@ public class FrameCourse extends JFrame
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 		this.pack();
+
+		this.setLocationRelativeTo(null);
+		this.pleinEcran();
+	}
+
+	public void pleinEcran()
+	{
+		this.dispose();
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		this.setVisible(true);
 	}
 
 	public void majIhm()

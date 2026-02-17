@@ -13,7 +13,7 @@ public class Controleur
 	
 	public Controleur ()
 	{
-		this.metier = new Metier(5);
+		this.metier = new Metier(10);
 		this.vue    = new FrameCourse(this);
 
 		ActionListener action = new ActionListener() 
@@ -24,8 +24,7 @@ public class Controleur
 			}
 		};
 
-		this.timer  = new Timer(40, action );
-		this.timer.start();
+		this.timer  = new Timer(10, action );
 	}
 
 	/* ----------------------------------------- */
@@ -42,12 +41,18 @@ public class Controleur
 		return this.metier.getCompteurCandidat(candidat);   
 	}
 
+	public int getRang(int numero)
+	{
+		return this.metier.getRang(numero);
+	}
+
 	/* ----------------------------------------- */
 	/*              Gestion Course               */
 	/* ----------------------------------------- */
 
 	public void lancerCourse()
 	{
+		this.timer.start();
 		this.metier.lancerCourse();
 	}
 
@@ -57,9 +62,20 @@ public class Controleur
 		this.majIhm();
 	}
 
+	public boolean estTerminer()
+	{
+		return this.metier.courseTerminer();
+	}
+
 	public void majIhm()
 	{
 		this.vue.majIhm();
+
+		if(this.metier.courseTerminer() && this.timer.isRunning())
+		{
+			this.timer.stop();
+		}
+
 	}
 
 	public static void main(String[] args) 

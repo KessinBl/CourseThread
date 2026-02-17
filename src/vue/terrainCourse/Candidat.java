@@ -17,13 +17,14 @@ public class Candidat
 
 		this.numeroCandidat = ++ Candidat.numero;
 		this.posX = 0;
-		this.posY = 50 +  (this.numeroCandidat -1 ) * 120;
+		this.posY = 50 +  (this.numeroCandidat -1 ) * 65;
 	}
 
 	/*--------------------------------*/
 	/*            Acesseurs           */
 	/*--------------------------------*/
 
+	public int   getNumero () { return this.numeroCandidat ; }
 	public Color getCouleur() { return this.couleurCandidat; }
 	public int   getX      () { return this.posX           ; }
 	public int   getY      () { return this.posY           ; }

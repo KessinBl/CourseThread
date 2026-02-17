@@ -16,7 +16,7 @@ public class Metier
 		this.lstThreads  = new ArrayList< Thread >();
 
 		this.nombre_candidat = nombre_candidat;
-		this.rangCandidat    = 0;
+		this.rangCandidat    = 1;
 		this.initLstCandidat(nombre_candidat);
 	}
 
@@ -38,7 +38,12 @@ public class Metier
 
 	public int getCompteurCandidat(int numero)
 	{
-		return (this.lstCandidat.get(numero -1) != null) ? this.lstCandidat.get(numero -1).getValeurCompteur() : 0;
+		return (this.lstCandidat.get(numero -1) != null) ? this.lstCandidat.get(numero -1).getValeurCompteur() : -1;
+	}
+
+	public Integer getRang(int numero)
+	{
+		return this.lstCandidat.get(numero - 1).getRang() != null ? this.lstCandidat.get(numero-1).getRang() : -1;
 	}
 
 	/* ---------------------------------- */
@@ -64,6 +69,7 @@ public class Metier
 				}
 				
 			};
+
 			Thread     t = new Thread(run);
 			t.start();
 
@@ -94,6 +100,7 @@ public class Metier
 		}
 
 		// Réinitialisation
+		this.rangCandidat = 1;
 		this.lstCandidat.clear();
 		this.lstThreads.clear();
 		this.initLstCandidat(this.nombre_candidat);
@@ -103,13 +110,18 @@ public class Metier
 	{
 		for(Candidat candidat : this.lstCandidat)
 		{
-			if(candidat.getValeurCompteur() <= 199 )
+			if(candidat.getRang() == null )
 			{
 				return false;
 			}
 		}
 
 		return true;
+	}
+
+	public List<Candidat> getLstCandidat()
+	{
+		return this.lstCandidat;
 	}
 
 	public synchronized int attribuerRang()
@@ -124,7 +136,5 @@ public class Metier
 			this.lstCandidat.add(new Candidat(cpt + 1));
 		}
 	}
-
-
 
 }

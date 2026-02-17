@@ -8,7 +8,7 @@ public class Candidat implements Runnable
 	private Integer   numero;
 	private Integer     rang;
 
-	private final int MAX = 255;
+	private static final int MAX = 255;
 
 	public Candidat (int numero)
 	{
@@ -35,6 +35,11 @@ public class Candidat implements Runnable
 	public int getValeurCompteur()
 	{
 		return this.compteur;
+	}
+
+	public static int getValeurMax()
+	{
+		return Candidat.MAX;
 	}
 
 	/*------------------------------------*/
@@ -65,10 +70,10 @@ public class Candidat implements Runnable
 	{
 		try 
 		{
-			while(this.enCours && this.compteur < this.MAX)
+			while(this.enCours && this.compteur < Candidat.MAX)
 			{
 				this.compteur++;
-				Thread.sleep(50);
+				Thread.sleep((int)(Math.random() * 30) + 10);
 			}
 
 			this.enCours = false;
