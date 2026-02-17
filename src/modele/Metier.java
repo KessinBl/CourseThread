@@ -1,5 +1,3 @@
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,10 +6,15 @@ import entite.Candidat;
 public class Metier 
 {
 	private List<Candidat> lstCandidat;
+	private List< Thread >  lstThreads;   
+	private int        nombre_candidat;
 
 	public Metier(int nombre_candidat)
 	{
 		this.lstCandidat = new ArrayList<Candidat>();
+		this.lstThreads  = new ArrayList< Thread >();
+
+		this.nombre_candidat = nombre_candidat;
 		this.initLstCandidat(nombre_candidat);
 	}
 
@@ -36,12 +39,33 @@ public class Metier
 		return (this.lstCandidat.get(numero -1) != null) ? this.lstCandidat.get(numero -1).getValeurCompteur() : 0;
 	}
 
+	/* ---------------------------------- */
+	/*            Gestion Course          */
+	/* ---------------------------------- */
+
 	public void lancerCourse()
 	{
+		this.lstThreads.clear();
+
 		for(Candidat candidat : this.lstCandidat)
 		{
-			candidat.lancer();
+			Thread t = new Thread(candidat);
+			t.start();
+
+			this.lstThreads.add(t);
 		}
+	}
+
+	public void recommencer()
+	{
+		for(Candidat c : this.lstCandidat)
+		{
+			c.arreter();
+			c.reinitialiserCompteur();
+		}
+
+		this.lstCandidat.clear();
+		this.initLstCandidat(this.nombre_candidat);
 	}
 
 	public boolean courseTerminer()

@@ -1,10 +1,11 @@
 package entite;
 
-public class Candidat extends Thread
+public class Candidat implements Runnable
 {
+	private volatile int     compteur;
+	private volatile boolean  enCours;
 	private Integer   numero;
 	private Integer     rang;
-	private int     compteur;
 
 	public Candidat (int numero)
 	{
@@ -12,6 +13,7 @@ public class Candidat extends Thread
 		this.compteur =      0;
 		this.rang     =   null;
 		this.compteur =      0;
+		this.enCours  =   true;
 	}
 
 	/*--------------------------------*/
@@ -42,39 +44,33 @@ public class Candidat extends Thread
 		this.rang = rang;
 	}
 
+	public void reinitialiserCompteur()
+	{
+		this.compteur = 0;
+	}
+
+	public void arreter()
+	{
+		this.enCours = false;
+	}
+
 	/*------------------------------------*/
 	/*          Autres Methodes           */
 	/*------------------------------------*/
-
-	public void lancer()
-	{
-		this.start();
-	}
 
 	public void run()
 	{
 		try 
 		{
-			for(int cpt = 0; cpt < 100; cpt++)
+			while(this.enCours && this.compteur < 100)
 			{
 				this.compteur++;
 				Thread.sleep(1000);
-
-				/*
-					String chaine = "";
-
-				for(int cptCompteur = 0; cptCompteur <this.compteur ; cptCompteur++)
-				{
-					chaine += " ";
-				}
-
-				System.out.println(chaine + numero);
-				*/
 			}
-		} 
-		catch (Exception e) 
+		}
+		catch(InterruptedException ie)
 		{
-			e.printStackTrace();
+			System.out.println(this.numero + " est arrêté ");
 		}
 		
 	}
