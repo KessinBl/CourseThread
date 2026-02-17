@@ -1,0 +1,21 @@
+# Dossiers IDE
+.vscode/
+.idea/
+
+# Compilation
+bin/
+out/
+build/
+
+# Librairies locales
+lib/
+
+# Fichiers Eclipse
+.classpath
+.project
+.settings/
+*.class
+
+# OS
+.DS_Store
+Thumbs.db
