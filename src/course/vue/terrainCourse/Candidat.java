@@ -1,3 +1,5 @@
+package course.vue.terrainCourse;
+
 import java.awt.Color;
 
 public class Candidat 

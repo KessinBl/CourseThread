@@ -1,7 +1,9 @@
+package course.modele;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import entite.Candidat;
+import course.modele.entite.Candidat;
 
 public class Metier 
 {

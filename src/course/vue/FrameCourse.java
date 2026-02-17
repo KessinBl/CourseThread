@@ -1,4 +1,9 @@
+package course.vue;
+
 import javax.swing.JFrame;
+
+import course.controleur.Controleur;
+import course.vue.PanelCourse;
 
 public class FrameCourse extends JFrame
 {

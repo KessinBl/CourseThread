@@ -1,3 +1,5 @@
+package course.vue.terrainCourse;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -6,6 +8,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
+
+import course.controleur.Controleur;
 
 public class PanelTerrainCourse extends JPanel
 {
