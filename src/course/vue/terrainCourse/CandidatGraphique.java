@@ -2,7 +2,7 @@ package course.vue.terrainCourse;
 
 import java.awt.Color;
 
-public class Candidat 
+public class CandidatGraphique 
 {
 	private static int numero = 0;
 
@@ -11,13 +11,13 @@ public class Candidat
 	private int posX;
 	private int posY;
 
-	public Candidat()
+	public CandidatGraphique()
 	{
 		this.couleurCandidat = new Color( (int)(Math.random() * 256), 
 		                                  (int)(Math.random() * 256), 
 		                                  (int)(Math.random() * 256));
 
-		this.numeroCandidat = ++ Candidat.numero;
+		this.numeroCandidat = ++ CandidatGraphique.numero;
 		this.posX = 0;
 		this.posY = 50 +  (this.numeroCandidat -1 ) * 65;
 	}

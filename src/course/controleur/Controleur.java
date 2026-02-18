@@ -43,7 +43,7 @@ public class Controleur
 
 	public int getValeurCompteur(int candidat)
 	{
-		return this.metier.getCompteurCandidat(candidat);   
+		return this.metier.getCompteurCandidat(candidat);
 	}
 
 	public int getRang(int numero)
