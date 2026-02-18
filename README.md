@@ -1,18 +1,63 @@
-## Getting Started
+# Course de Threads en Java
+---
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## I. Description
 
-## Folder Structure
+Simulation graphique d’une course entre threads pour observer le comportement indéterministe.
 
-The workspace contains two folders by default, where:
+- Chaque coureur est un thread indépendant.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- Les rangs finaux dépendent de l’ordre d’exécution des threads.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+- Possibilité de lancer et relancer plusieurs fois la course.
+## II. Arborescence 
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+	C:.
+	└───course
+		├───controleur
+		│       Controleur.java
+		│
+		├───modele
+		│   │   Metier.java
+		│   │
+		│   └───entite
+		│           Candidat.java
+		│
+		└───vue
+			│   FrameCourse.java
+			│   PanelCourse.java
+			│
+			└───terrainCourse
+					Candidat.java
+					PanelTerrainCourse.java
+## III. Aperçu
 
-## Dependency Management
+- Carrés colorés représentant chaque coureur  
+- Mise à jour graphique en temps réel  
+- Rang final affiché au centre du carré  
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## IV. Comment lancer le projet
+
+### 1. sur linux 
+
+Après avoir récupérer le projet , placer vous a la racine du projet et lancer le la commande : 
+
+	./run.sh
+
+### 2. sur Windows 
+
+Après avoir récupérer le projet , placer vous a la racine du projet et lancer le la commande : 
+
+	./run.bat
+
+ou rendez-vous à la racine du projet dans l'explorateur de fichier et double-cliquez sur run.bat.
+
+## V. Technologie
+
+- Java 8+
+
+- Swing (GUI)
+
+- MVC (Modèle-Vue-Contrôleur)
+
+- Threads (Runnable)
