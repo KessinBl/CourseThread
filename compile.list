@@ -6,4 +6,4 @@ src/course/modele/entite/Candidat.java
 src/course/vue/FrameCourse.java
 src/course/vue/PanelCourse.java
 src/course/vue/terrainCourse/PanelTerrainCourse.java
-src/course/vue/terrainCourse/Candidat.java
+src/course/vue/terrainCourse/CandidatGraphique.java
