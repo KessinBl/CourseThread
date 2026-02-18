@@ -3,7 +3,6 @@ package course.vue;
 import javax.swing.JFrame;
 
 import course.controleur.Controleur;
-import course.vue.PanelCourse;
 
 public class FrameCourse extends JFrame
 {
@@ -19,7 +18,7 @@ public class FrameCourse extends JFrame
 		/* --------------------------------------- */
 
 		this.ctrl = ctrl;
-		this.panelCourse = new PanelCourse(ctrl);
+		this.panelCourse = new PanelCourse(this.ctrl);
 
 		/* --------------------------------------- */
 		/*      Positionnement des composants      */

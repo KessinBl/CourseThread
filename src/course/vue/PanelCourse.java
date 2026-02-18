@@ -20,7 +20,6 @@ public class PanelCourse extends JPanel implements ActionListener
 	private JButton btnCommencer;
 	private JButton btnRecommencer;
 
-	private JPanel  panelCandidat;
 	private Candidat[] tabCandidats;
 	private PanelTerrainCourse panelTerrain;
 	
