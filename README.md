@@ -38,7 +38,7 @@ Simulation graphique d’une course entre threads pour observer le comportement 
 
 ### video demonstrative
 
-![Course des threads](assets/course.gif)
+![Course des threads](assets/course.gif )
 
 ## IV. Comment lancer le projet
 
