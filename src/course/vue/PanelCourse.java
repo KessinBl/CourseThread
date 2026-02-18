@@ -1,3 +1,4 @@
+package course.vue;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -7,6 +8,10 @@ import javax.swing.BorderFactory;
 import java.awt.BorderLayout;
 import java.awt.Label;
 import java.awt.event.*;
+
+import course.controleur.Controleur;
+import course.vue.terrainCourse.Candidat;
+import course.vue.terrainCourse.PanelTerrainCourse;
 
 public class PanelCourse extends JPanel implements ActionListener
 {

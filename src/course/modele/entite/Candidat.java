@@ -1,4 +1,4 @@
-package entite;
+package course.modele.entite;
 
 public class Candidat implements Runnable
 {
