@@ -82,13 +82,11 @@ public class Metier
 
 	public void recommencer()
 	{
-		// Stopper les candidats
 		for(Candidat c : this.lstCandidat)
 		{
 			c.arreter();
 		}
 
-		// Attendre la fin des threads
 		for(Thread t : this.lstThreads)
 		{
 			try

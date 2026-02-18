@@ -10,7 +10,7 @@ import java.awt.Label;
 import java.awt.event.*;
 
 import course.controleur.Controleur;
-import course.vue.terrainCourse.Candidat;
+import course.vue.terrainCourse.CandidatGraphique;
 import course.vue.terrainCourse.PanelTerrainCourse;
 
 public class PanelCourse extends JPanel implements ActionListener
@@ -20,9 +20,8 @@ public class PanelCourse extends JPanel implements ActionListener
 	private JButton btnCommencer;
 	private JButton btnRecommencer;
 
-	private Candidat[] tabCandidats;
+	private CandidatGraphique[] tabCandidats;
 	private PanelTerrainCourse panelTerrain;
-	
 	
 	public PanelCourse(Controleur ctrl)
 	{
@@ -41,17 +40,17 @@ public class PanelCourse extends JPanel implements ActionListener
 		panelHaut.add(new JLabel("Bienvenue dans la course des Threads"));
 
 		/* Pour le panel du milieu */
-		this.tabCandidats = new Candidat[this.ctrl.getNombreCandidat()];
+		this.tabCandidats = new CandidatGraphique[this.ctrl.getNombreCandidat()];
 		
 		for(int cpt = 0; cpt < this.tabCandidats.length; cpt++)
 		{
-			this.tabCandidats[cpt] = new Candidat();
+			this.tabCandidats[cpt] = new CandidatGraphique();
 		}
 
+		this.panelTerrain = new PanelTerrainCourse(this.ctrl , this.tabCandidats);
+		
 		panelCentre = new JPanel(new BorderLayout(10,10));
 		panelCentre.setBorder(BorderFactory.createTitledBorder("Terrain de course"));
-		
-		this.panelTerrain = new PanelTerrainCourse(this.ctrl , this.tabCandidats);
 		panelCentre.add(this.panelTerrain,BorderLayout.CENTER);
 
 
@@ -73,8 +72,9 @@ public class PanelCourse extends JPanel implements ActionListener
 		this.add(panelHaut  , BorderLayout.NORTH );
 		this.add(panelCentre, BorderLayout.CENTER);
 		this.add(panelBas   , BorderLayout.SOUTH );
-		this.add(new Label(" "), BorderLayout.EAST);
-		this.add(new Label(" "), BorderLayout.WEST);
+		
+		this.add(new Label(""), BorderLayout.EAST);
+		this.add(new Label(""), BorderLayout.WEST);
 
 		/* --------------------------------------- */
 		/*        Activations des composants       */
