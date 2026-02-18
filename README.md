@@ -34,7 +34,11 @@ Simulation graphique d’une course entre threads pour observer le comportement 
 
 - Carrés colorés représentant chaque coureur  
 - Mise à jour graphique en temps réel  
-- Rang final affiché au centre du carré  
+- Rang final affiché au centre du carré 
+
+### video demonstrative
+
+![Course des threads](assets/course.gif)
 
 ## IV. Comment lancer le projet
 
